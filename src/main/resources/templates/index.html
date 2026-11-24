@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpaSun | Santuario de Paz y Bienestar</title>
+
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Bootstrap Icons CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Google Fonts: Playfair Display & Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..800;1,400..700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Estilos Personalizados para Estética Spa (Tonos Beige, Crema, Verde Salvia y Dorado Suave) -->
+    <style>
+        :root {
+            --spa-cream: #FAF7F2;
+            --spa-beige: #EFE8DD;
+            --spa-sage: #7A8B76;
+            --spa-sage-dark: #5A6B56;
+            --spa-sage-light: #E4EAE3;
+            --spa-gold: #C5A059;
+            --spa-gold-hover: #B08B43;
+            --spa-charcoal: #2C332E;
+            --spa-muted: #6C756E;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--spa-cream);
+            color: var(--spa-charcoal);
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Utilidades de Color */
+        .bg-cream {
+            background-color: var(--spa-cream);
+        }
+
+        .bg-beige {
+            background-color: var(--spa-beige);
+        }
+
+        .bg-sage {
+            background-color: var(--spa-sage);
+        }
+
+        .bg-sage-light {
+            background-color: var(--spa-sage-light);
+        }
+
+        .text-sage {
+            color: var(--spa-sage);
+        }
+
+        .text-sage-dark {
+            color: var(--spa-sage-dark);
+        }
+
+        .text-gold {
+            color: var(--spa-gold);
+        }
+
+        /* Botones Personalizados */
+        .btn-gold {
+            background-color: var(--spa-gold);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 30px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.25);
+        }
+
+        .btn-gold:hover {
+            background-color: var(--spa-gold-hover);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(197, 160, 89, 0.35);
+        }
+
+        .btn-sage {
+            background-color: var(--spa-sage);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-sage:hover {
+            background-color: var(--spa-sage-dark);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-light-spa {
+            border: 1.5px solid rgba(255, 255, 255, 0.85);
+            color: #fff;
+            border-radius: 50px;
+            padding: 12px 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-light-spa:hover {
+            background-color: #fff;
+            color: var(--spa-charcoal);
+        }
+
+        /* Navbar */
+        .navbar-spa {
+            background-color: rgba(250, 247, 242, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+            transition: all 0.3s ease;
+            padding: 15px 0;
+        }
+
+        .navbar-spa.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 4px 20px rgba(44, 51, 46, 0.06);
+        }
+
+        .nav-link {
+            color: var(--spa-charcoal) !important;
+            font-weight: 400;
+            font-size: 0.95rem;
+            margin: 0 8px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--spa-gold) !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 2px;
+            left: 50%;
+            background-color: var(--spa-gold);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 60%;
+        }
+
+        /* Sección Hero */
+        .hero-section {
+            min-height: 100vh;
+            background: linear-gradient(rgba(30, 36, 32, 0.45), rgba(30, 36, 32, 0.55)),
+                url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 80px;
+        }
+
+        .hero-badge {
+            background-color: rgba(250, 247, 242, 0.18);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #FAF7F2;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: inline-block;
+        }
+
+        /* Títulos de Sección */
+        .section-subtitle {
+            color: var(--spa-gold);
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .section-divider {
+            width: 60px;
+            height: 2px;
+            background-color: var(--spa-gold);
+            margin: 16px auto 24px;
+        }
+
+        /* Tarjetas de Servicios */
+        .service-card {
+            background-color: #fff;
+            border: 1px solid rgba(197, 160, 89, 0.15);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.35s ease;
+            height: 100%;
+            box-shadow: 0 10px 30px rgba(44, 51, 46, 0.04);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 40px rgba(44, 51, 46, 0.1);
+            border-color: var(--spa-gold);
+        }
+
+        .service-img-wrapper {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .service-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .service-card:hover .service-img-wrapper img {
+            transform: scale(1.08);
+        }
+
+        .service-badge-duration {
+            position: absolute;
+            bottom: 14px;
+            right: 14px;
+            background-color: rgba(250, 247, 242, 0.95);
+            color: var(--spa-charcoal);
+            padding: 5px 14px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .price-tag {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--spa-sage-dark);
+        }
+
+        /* Sección Sobre Nosotros */
+        .about-img-main {
+            border-radius: 24px;
+            box-shadow: 0 20px 45px rgba(44, 51, 46, 0.12);
+        }
+
+        .stat-box {
+            background-color: #fff;
+            border-radius: 16px;
+            padding: 20px;
+            border-left: 4px solid var(--spa-gold);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        /* Galería / Experiencias */
+        .gallery-item {
+            position: relative;
+            border-radius: 18px;
+            overflow: hidden;
+            height: 280px;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(44, 51, 46, 0.8), transparent 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 24px;
+            color: #fff;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.06);
+        }
+
+        /* Paquetes Especiales */
+        .package-card {
+            background-color: #fff;
+            border-radius: 24px;
+            padding: 36px 30px;
+            border: 1px solid rgba(122, 139, 118, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            height: 100%;
+        }
+
+        .package-card.featured {
+            background: linear-gradient(145deg, #ffffff 0%, #f5f1e8 100%);
+            border: 2px solid var(--spa-gold);
+            box-shadow: 0 15px 40px rgba(197, 160, 89, 0.15);
+        }
+
+        .ribbon-popular {
+            position: absolute;
+            top: -14px;
+            right: 28px;
+            background-color: var(--spa-gold);
+            color: #fff;
+            padding: 4px 16px;
+            border-radius: 50px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* Testimonios Carrusel */
+        .testimonial-card {
+            background-color: #fff;
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 780px;
+            margin: 0 auto;
+            box-shadow: 0 12px 35px rgba(44, 51, 46, 0.06);
+            border: 1px solid rgba(197, 160, 89, 0.15);
+        }
+
+        .carousel-indicators [data-bs-target] {
+            background-color: var(--spa-sage);
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        /* Formulario de Reserva */
+        .booking-wrapper {
+            background-color: #fff;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(44, 51, 46, 0.08);
+        }
+
+        .booking-sidebar {
+            background: linear-gradient(160deg, var(--spa-sage) 0%, var(--spa-sage-dark) 100%);
+            color: #fff;
+            padding: 45px;
+        }
+
+        .form-control,
+        .form-select {
+            border-radius: 12px;
+            padding: 12px 16px;
+            border: 1px solid #DCD6CC;
+            background-color: var(--spa-cream);
+            color: var(--spa-charcoal);
+            font-size: 0.95rem;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: var(--spa-gold);
+            box-shadow: 0 0 0 0.25rem rgba(197, 160, 89, 0.2);
+            background-color: #fff;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #232925;
+            color: #D8D3C8;
+        }
+
+        footer h5 {
+            color: #FAF7F2;
+            font-weight: 600;
+        }
+
+        .footer-link {
+            color: #B8B3A8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .footer-link:hover {
+            color: var(--spa-gold);
+            padding-left: 4px;
+        }
+
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.08);
+            color: #FAF7F2;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-btn:hover {
+            background-color: var(--spa-gold);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#mainNavbar" data-bs-offset="90">
+
+    <!-- 1. BARRA DE NAVEGACIÓN FIJA -->
+    <nav id="mainNavbar" class="navbar navbar-expand-lg fixed-top navbar-spa">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#inicio">
+                <i class="bi bi-flower1 fs-3 text-gold me-2"></i>
+                <div>
+                    <span class="font-serif fw-bold fs-4 d-block lh-1" style="color: var(--spa-charcoal);">SpaSun</span>
+                    <small class="text-uppercase tracking-widest"
+                        style="font-size: 0.65rem; letter-spacing: 2.5px; color: var(--spa-sage-dark);">Spa &
+                        Wellness</small>
+                </div>
+            </a>
+
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
+                aria-label="Alternar navegación">
+                <i class="bi bi-list fs-1" style="color: var(--spa-charcoal);"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#servicios">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#nosotros">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#galeria">Experiencias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#paquetes">Paquetes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonios">Testimonios</a>
+                    </li>
+                </ul>
+                <div class="d-flex justify-content-center">
+                    <a href="#reservar" class="btn btn-gold">
+                        <i class="bi bi-calendar2-heart me-2"></i>Reservar Cita
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 2. SECCIÓN HERO DE PANTALLA COMPLETA -->
+    <header id="inicio" class="hero-section text-white text-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <span class="hero-badge mb-4">
+                        <i class="bi bi-stars me-1 text-gold"></i> Santuario Holístico de Bienestar
+                    </span>
+                    <h1 class="display-3 fw-bold mb-4 lh-sm">
+                        Renueva tu cuerpo, calma tu mente y eleva tu espíritu
+                    </h1>
+                    <p class="lead mb-5 px-md-5 opacity-90 fw-light">
+                        Sumérgete en un oasis de serenidad donde terapias ancestrales, aromaterapia botánica y atención
+                        personalizada se unen para devolverte el equilibrio interior.
+                    </p>
+                    <div class="d-flex flex-column flex-sm-row justify-content-center gap-3">
+                        <a href="#reservar" class="btn btn-gold btn-lg px-5">
+                            Agendar Mi Experiencia
+                        </a>
+                        <a href="#servicios" class="btn btn-outline-light-spa btn-lg px-5">
+                            Explorar Tratamientos
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 3. SECCIÓN DE SERVICIOS DESTACADOS -->
+    <section id="servicios" class="py-5 my-md-4">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <span class="section-subtitle">Carta de Tratamientos</span>
+                <h2 class="display-5 fw-bold">Nuestros Servicios Destacados</h2>
+                <div class="section-divider"></div>
+                <p class="text-muted col-lg-7 mx-auto">
+                    Cada ritual está diseñado cuidadosamente utilizando aceites esenciales orgánicos y técnicas
+                    terapéuticas adaptadas a tus necesidades.
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Servicio 1: Masajes Relajantes -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card d-flex flex-column">
+                        <div class="service-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=800&q=80"
+                                alt="Masajes Relajantes"
+                                onerror="this.src='https://placehold.co/800x500/E4EAE3/2C332E?text=Masajes+Relajantes'">
+                            <span class="service-badge-duration"><i class="bi bi-clock me-1 text-gold"></i>60 / 90
+                                min</span>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h4 class="fw-bold mb-0">Masajes Relajantes</h4>
+                                <span class="price-tag">$85</span>
+                            </div>
+                            <p class="text-muted small flex-grow-1">
+                                Movimientos fluidos y envolventes con aceites tibios de lavanda y sándalo que disuelven
+                                la tensión muscular y reducen el estrés profundo.
+                            </p>
+                            <div class="pt-3 border-top d-flex justify-content-between align-items-center">
+                                <span class="small text-sage-dark fw-medium"><i
+                                        class="bi bi-droplet-half me-1"></i>Aceites tibios</span>
+                                <button class="btn btn-sm btn-sage px-3 select-service-btn"
+                                    data-service="Masaje Relajante ($85 - 60 min)">
+                                    Reservar <i class="bi bi-arrow-right ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Servicio 2: Tratamientos Faciales -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card d-flex flex-column">
+                        <div class="service-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80"
+                                alt="Tratamientos Faciales"
+                                onerror="this.src='https://placehold.co/800x500/E4EAE3/2C332E?text=Tratamientos+Faciales'">
+                            <span class="service-badge-duration"><i class="bi bi-clock me-1 text-gold"></i>60 min</span>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h4 class="fw-bold mb-0">Tratamientos Faciales</h4>
+                                <span class="price-tag">$95</span>
+                            </div>
+                            <p class="text-muted small flex-grow-1">
+                                Limpieza profunda, hidratación celular con ácido hialurónico botánico y masaje kobido
+                                reafirmante para una piel luminosa y revitalizada.
+                            </p>
+                            <div class="pt-3 border-top d-flex justify-content-between align-items-center">
+                                <span class="small text-sage-dark fw-medium"><i class="bi bi-flower2 me-1"></i>Cosmética
+                                    orgánica</span>
+                                <button class="btn btn-sm btn-sage px-3 select-service-btn"
+                                    data-service="Tratamiento Facial Botánico ($95 - 60 min)">
+                                    Reservar <i class="bi bi-arrow-right ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Servicio 3: Hidroterapia -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card d-flex flex-column">
+                        <div class="service-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80"
+                                alt="Hidroterapia"
+                                onerror="this.src='https://placehold.co/800x500/E4EAE3/2C332E?text=Hidroterapia'">
+                            <span class="service-badge-duration"><i class="bi bi-clock me-1 text-gold"></i>75 min</span>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h4 class="fw-bold mb-0">Hidroterapia</h4>
+                                <span class="price-tag">$75</span>
+                            </div>
+                            <p class="text-muted small flex-grow-1">
+                                Circuito termal revitalizante con jacuzzis de sales minerales, cascadas cervicales y
+                                contraste térmico para estimular la circulación.
+                            </p>
+                            <div class="pt-3 border-top d-flex justify-content-between align-items-center">
+                                <span class="small text-sage-dark fw-medium"><i class="bi bi-water me-1"></i>Sales del
+                                    Himalaya</span>
+                                <button class="btn btn-sm btn-sage px-3 select-service-btn"
+                                    data-service="Circuito de Hidroterapia ($75 - 75 min)">
+                                    Reservar <i class="bi bi-arrow-right ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Servicio 4: Aromaterapia -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card d-flex flex-column">
+                        <div class="service-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=800&q=80"
+                                alt="Aromaterapia"
+                                onerror="this.src='https://placehold.co/800x500/E4EAE3/2C332E?text=Aromaterapia'">
+                            <span class="service-badge-duration"><i class="bi bi-clock me-1 text-gold"></i>50 min</span>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h4 class="fw-bold mb-0">Aromaterapia</h4>
+                                <span class="price-tag">$70</span>
+                            </div>
+                            <p class="text-muted small flex-grow-1">
+                                Sinergia personalizada de esencias puras de bergamota, eucalipto y manzanilla combinadas
+                                con digitopuntura craneal y relajación sensorial.
+                            </p>
+                            <div class="pt-3 border-top d-flex justify-content-between align-items-center">
+                                <span class="small text-sage-dark fw-medium"><i class="bi bi-wind me-1"></i>Esencias
+                                    100% puras</span>
+                                <button class="btn btn-sm btn-sage px-3 select-service-btn"
+                                    data-service="Sesión de Aromaterapia ($70 - 50 min)">
+                                    Reservar <i class="bi bi-arrow-right ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Servicio 5: Rituales Corporales -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card d-flex flex-column">
+                        <div class="service-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=800&q=80"
+                                alt="Rituales Corporales"
+                                onerror="this.src='https://placehold.co/800x500/E4EAE3/2C332E?text=Rituales+Corporales'">
+                            <span class="service-badge-duration"><i class="bi bi-clock me-1 text-gold"></i>90 min</span>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h4 class="fw-bold mb-0">Rituales Corporales</h4>
+                                <span class="price-tag">$115</span>
+                            </div>
+                            <p class="text-muted small flex-grow-1">
+                                Exfoliación suave con azúcar de caña y coco seguida de una envoltura nutritiva de
+                                arcilla blanca y manteca de karité orgánica.
+                            </p>
+                            <div class="pt-3 border-top d-flex justify-content-between align-items-center">
+                                <span class="small text-sage-dark fw-medium"><i
+                                        class="bi bi-sparkles me-1"></i>Renovación total</span>
+                                <button class="btn btn-sm btn-sage px-3 select-service-btn"
+                                    data-service="Ritual Corporal Nutritivo ($115 - 90 min)">
+                                    Reservar <i class="bi bi-arrow-right ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Servicio 6: Sauna y Vapor -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card d-flex flex-column">
+                        <div class="service-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=800&q=80"
+                                alt="Sauna y Vapor"
+                                onerror="this.src='https://placehold.co/800x500/E4EAE3/2C332E?text=Sauna+y+Vapor'">
+                            <span class="service-badge-duration"><i class="bi bi-clock me-1 text-gold"></i>45 min</span>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h4 class="fw-bold mb-0">Sauna y Vapor</h4>
+                                <span class="price-tag">$55</span>
+                            </div>
+                            <p class="text-muted small flex-grow-1">
+                                Cabinas de madera de cedro finlandés y baño de vapor infundido con hojas frescas de
+                                eucalipto para purificar las vías respiratorias y la piel.
+                            </p>
+                            <div class="pt-3 border-top d-flex justify-content-between align-items-center">
+                                <span class="small text-sage-dark fw-medium"><i
+                                        class="bi bi-thermometer-sun me-1"></i>Detox termal</span>
+                                <button class="btn btn-sm btn-sage px-3 select-service-btn"
+                                    data-service="Sauna Finlandés y Vapor ($55 - 45 min)">
+                                    Reservar <i class="bi bi-arrow-right ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. SECCIÓN SOBRE NOSOTROS -->
+    <section id="nosotros" class="py-5 bg-beige">
+        <div class="container py-4">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <div class="position-relative">
+                        <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=900&q=80"
+                            alt="Interior SpaSun" class="img-fluid about-img-main"
+                            onerror="this.src='https://placehold.co/900x650/7A8B76/FAF7F2?text=Filosofia+SpaSun'">
+                        <div class="bg-white p-4 rounded-4 shadow position-absolute bottom-0 end-0 m-3 d-none d-sm-block"
+                            style="max-width: 240px; border-bottom: 4px solid var(--spa-gold);">
+                            <p class="font-serif fst-italic mb-1 text-dark">"El verdadero lujo es regalarte tiempo para
+                                volver a ti."</p>
+                            <small class="text-gold fw-semibold">— Fundadoras de SpaSun</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <span class="section-subtitle">Nuestra Filosofía</span>
+                    <h2 class="display-5 fw-bold mb-4">Un refugio diseñado para armonizar tus sentidos</h2>
+                    <p class="text-muted mb-4">
+                        En <strong>SpaSun</strong> creemos que el bienestar no es un lujo ocasional, sino una necesidad
+                        vital. Nuestro espacio ha sido concebido bajo principios de arquitectura biofílica, utilizando
+                        materiales nobles, iluminación cálida y aromas naturales que invitan a desconectar del ritmo
+                        acelerado de la ciudad desde el primer instante.
+                    </p>
+                    <p class="text-muted mb-4">
+                        Contamos con un equipo de terapeutas certificados que combinan técnicas milenarias orientales
+                        con la vanguardia de la cosmética botánica sostenible.
+                    </p>
+
+                    <!-- Estadísticas Clave -->
+                    <div class="row g-3 mt-2">
+                        <div class="col-sm-4">
+                            <div class="stat-box text-center text-sm-start">
+                                <h3 class="fw-bold text-sage-dark mb-0">+12</h3>
+                                <small class="text-muted">Años de experiencia</small>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="stat-box text-center text-sm-start">
+                                <h3 class="fw-bold text-sage-dark mb-0">100%</h3>
+                                <small class="text-muted">Productos orgánicos</small>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="stat-box text-center text-sm-start">
+                                <h3 class="fw-bold text-sage-dark mb-0">+8,500</h3>
+                                <small class="text-muted">Clientes renovados</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE GALERÍA / EXPERIENCIAS -->
+    <section id="galeria" class="py-5">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <span class="section-subtitle">Nuestros Espacios</span>
+                <h2 class="display-5 fw-bold">Atmósfera & Experiencias</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="gallery-item shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1591343395082-e120087004b4?auto=format&fit=crop&w=600&q=80"
+                            alt="Salas Privadas"
+                            onerror="this.src='https://placehold.co/600x450/7A8B76/FAF7F2?text=Suites+Privadas'">
+                        <div class="gallery-overlay">
+                            <h5 class="fw-bold mb-1">Suites Privadas</h5>
+                            <small class="opacity-75">Intimidad y silencio absoluto</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="gallery-item shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=600&q=80"
+                            alt="Jardín Termal"
+                            onerror="this.src='https://placehold.co/600x450/7A8B76/FAF7F2?text=Jardin+Termal'">
+                        <div class="gallery-overlay">
+                            <h5 class="fw-bold mb-1">Jardín Termal</h5>
+                            <small class="opacity-75">Aguas cálidas al aire libre</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="gallery-item shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&w=600&q=80"
+                            alt="Lounge de Infusiones"
+                            onerror="this.src='https://placehold.co/600x450/7A8B76/FAF7F2?text=Lounge+de+Te'">
+                        <div class="gallery-overlay">
+                            <h5 class="fw-bold mb-1">Lounge de Té</h5>
+                            <small class="opacity-75">Infusiones herbales de cortesía</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="gallery-item shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1531299204812-e6d44d9a185c?auto=format&fit=crop&w=600&q=80"
+                            alt="Piedras Calientes"
+                            onerror="this.src='https://placehold.co/600x450/7A8B76/FAF7F2?text=Terapia+Geotermal'">
+                        <div class="gallery-overlay">
+                            <h5 class="fw-bold mb-1">Terapia Geotermal</h5>
+                            <small class="opacity-75">Piedras volcánicas basálticas</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. SECCIÓN DE PAQUETES ESPECIALES / PROMOCIONES -->
+    <section id="paquetes" class="py-5 bg-sage-light">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <span class="section-subtitle">Experiencias Combinadas</span>
+                <h2 class="display-5 fw-bold">Paquetes Especiales</h2>
+                <div class="section-divider"></div>
+                <p class="text-muted col-lg-6 mx-auto">
+                    Regala o regálate una jornada inolvidable con nuestras combinaciones exclusivas a precios
+                    preferenciales.
+                </p>
+            </div>
+
+            <div class="row g-4 align-items-stretch">
+                <!-- Paquete 1: Ritual Detox -->
+                <div class="col-lg-4">
+                    <div class="package-card d-flex flex-column">
+                        <span class="text-uppercase small fw-semibold text-sage mb-2">Purificación Total</span>
+                        <h3 class="fw-bold mb-2">Ritual Detox & Renacer</h3>
+                        <p class="text-muted small mb-4">Ideal para liberar toxinas, renovar la piel y recuperar la
+                            vitalidad.</p>
+                        <div class="mb-4">
+                            <span class="display-6 fw-bold font-serif" style="color: var(--spa-charcoal);">$145</span>
+                            <span class="text-muted small"> / por persona (2.5 hrs)</span>
+                        </div>
+                        <ul class="list-unstyled mb-4 flex-grow-1">
+                            <li class="mb-2"><i class="bi bi-check2-circle text-gold me-2"></i>Acceso a Sauna y Vapor de
+                                eucalipto</li>
+                            <li class="mb-2"><i class="bi bi-check2-circle text-gold me-2"></i>Exfoliación corporal con
+                                sales marinas</li>
+                            <li class="mb-2"><i class="bi bi-check2-circle text-gold me-2"></i>Masaje drenante linfático
+                                (60 min)</li>
+                            <li class="mb-2"><i class="bi bi-check2-circle text-gold me-2"></i>Infusión detox de
+                                jengibre y limón</li>
+                        </ul>
+                        <button class="btn btn-sage w-100 select-service-btn"
+                            data-service="Paquete Ritual Detox & Renacer ($145)">
+                            Elegir Este Paquete
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Paquete 2: Día de Spa en Pareja (Destacado) -->
+                <div class="col-lg-4">
+                    <div class="package-card featured d-flex flex-column">
+                        <span class="ribbon-popular"><i class="bi bi-heart-fill me-1"></i>Más Solicitado</span>
+                        <span class="text-uppercase small fw-semibold text-gold mb-2">Conexión Romántica</span>
+                        <h3 class="fw-bold mb-2">Día de Spa en Pareja</h3>
+                        <p class="text-muted small mb-4">Una experiencia íntima en nuestra Suite Dual con jacuzzi
+                            privado.</p>
+                        <div class="mb-4">
+                            <span class="display-6 fw-bold font-serif" style="color: var(--spa-charcoal);">$260</span>
+                            <span class="text-muted small"> / por pareja (3 hrs)</span>
+                        </div>
+                        <ul class="list-unstyled mb-4 flex-grow-1">
+                            <li class="mb-2"><i class="bi bi-check2-circle text-gold me-2"></i>Jacuzzi privado con
+                                pétalos y aromaterapia</li>
+                            <li class="mb-2"><i class="bi bi-check2-circle text-gold me-2"></i>Masaje relajante
+                                simultáneo (75 min)</li>
+                            <li class="mb-2"><i class="bi bi-check2-circle text-gold me-2"></i>Mini facial hidratante
+                                express</li>
+                            <li class="mb-2"><i class="bi bi-check2-circle text-gold me-2"></i>Copa de espumante y
+                                trufas artesanales</li>
+                        </ul>
+                        <button class="btn btn-gold w-100 select-service-btn"
+                            data-service="Paquete Día de Spa en Pareja ($260)">
+                            Reservar Para Dos
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Paquete 3: Escapada SpaSun VIP -->
+                <div class="col-lg-4">
+                    <div class="package-card d-flex flex-column">
+                        <span class="text-uppercase small fw-semibold text-sage mb-2">Bienestar Supremo</span>
+                        <h3 class="fw-bold mb-2">Escapada SpaSun VIP</h3>
+                        <p class="text-muted small mb-4">Medio día de inmersión absoluta de pies a cabeza.</p>
+                        <div class="mb-4">
+                            <span class="display-6 fw-bold font-serif" style="color: var(--spa-charcoal);">$195</span>
+                            <span class="text-muted small"> / por persona (3.5 hrs)</span>
+                        </div>
+                        <ul class="list-unstyled mb-4 flex-grow-1">
+                            <li class="mb-2"><i class="bi bi-check2-circle text-gold me-2"></i>Circuito completo de
+                                Hidroterapia</li>
+                            <li class="mb-2"><i class="bi bi-check2-circle text-gold me-2"></i>Masaje con piedras
+                                volcánicas (75 min)</li>
+                            <li class="mb-2"><i class="bi bi-check2-circle text-gold me-2"></i>Facial anti-edad con
+                                ácido hialurónico</li>
+                            <li class="mb-2"><i class="bi bi-check2-circle text-gold me-2"></i>Almuerzo ligero orgánico
+                                en nuestro jardín</li>
+                        </ul>
+                        <button class="btn btn-sage w-100 select-service-btn"
+                            data-service="Paquete Escapada SpaSun VIP ($195)">
+                            Elegir Este Paquete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. TESTIMONIOS DE CLIENTES (CARRUSEL DE BOOTSTRAP) -->
+    <section id="testimonios" class="py-5 my-md-3">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <span class="section-subtitle">Voces de Calma</span>
+                <h2 class="display-5 fw-bold">Lo Que Dicen Nuestros Huéspedes</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner pb-5">
+                    <!-- Testimonio 1 -->
+                    <div class="carousel-item active">
+                        <div class="testimonial-card text-center">
+                            <div class="text-gold mb-3 fs-5">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="lead font-serif fst-italic mb-4" style="color: var(--spa-charcoal);">
+                                "Desde que cruzas la puerta, el aroma a lavanda y el sonido del agua te transportan a
+                                otro mundo. El masaje con piedras calientes fue el mejor que me he hecho en la vida.
+                                Salí completamente renovada."
+                            </p>
+                            <h5 class="fw-bold mb-0">Camila Restrepo</h5>
+                            <small class="text-muted">Visitante frecuente • Masaje Relajante</small>
+                        </div>
+                    </div>
+
+                    <!-- Testimonio 2 -->
+                    <div class="carousel-item">
+                        <div class="testimonial-card text-center">
+                            <div class="text-gold mb-3 fs-5">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="lead font-serif fst-italic mb-4" style="color: var(--spa-charcoal);">
+                                "Reservé el Día de Spa en Pareja para nuestro aniversario y superó todas nuestras
+                                expectativas. La privacidad de la suite, la amabilidad del personal y cada detalle
+                                hicieron un día mágico."
+                            </p>
+                            <h5 class="fw-bold mb-0">Andrés Felipe Gómez</h5>
+                            <small class="text-muted">Paquete en Pareja</small>
+                        </div>
+                    </div>
+
+                    <!-- Testimonio 3 -->
+                    <div class="carousel-item">
+                        <div class="testimonial-card text-center">
+                            <div class="text-gold mb-3 fs-5">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="lead font-serif fst-italic mb-4" style="color: var(--spa-charcoal);">
+                                "El tratamiento facial botánico dejó mi piel radiante e hidratada por semanas. Me
+                                encanta que utilicen productos naturales y que se tomen el tiempo de analizar lo que tu
+                                piel realmente necesita."
+                            </p>
+                            <h5 class="fw-bold mb-0">Valentina Mendoza</h5>
+                            <small class="text-muted">Tratamiento Facial Botánico</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Indicadores y Controles -->
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Testimonio 1"></button>
+                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1"
+                        aria-label="Testimonio 2"></button>
+                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2"
+                        aria-label="Testimonio 3"></button>
+                </div>
+                <button class="carousel-control-prev d-none d-md-flex" type="button"
+                    data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                    <span class="bg-white rounded-circle shadow p-3 d-flex align-items-center justify-content-center"
+                        style="color: var(--spa-charcoal);">
+                        <i class="bi bi-chevron-left"></i>
+                    </span>
+                </button>
+                <button class="carousel-control-next d-none d-md-flex" type="button"
+                    data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                    <span class="bg-white rounded-circle shadow p-3 d-flex align-items-center justify-content-center"
+                        style="color: var(--spa-charcoal);">
+                        <i class="bi bi-chevron-right"></i>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. FORMULARIO INTERACTIVO DE RESERVA DE CITAS -->
+    <section id="reservar" class="py-5 bg-beige">
+        <div class="container py-4">
+            <div class="booking-wrapper">
+                <div class="row g-0">
+                    <!-- Barra lateral informativa -->
+                    <div class="col-lg-5 booking-sidebar d-flex flex-column justify-content-between">
+                        <div>
+                            <span class="text-uppercase small tracking-widest opacity-75">Tu Momento de Paz</span>
+                            <h2 class="display-6 fw-bold mt-2 mb-4">Reserva tu Cita en SpaSun</h2>
+                            <p class="opacity-90 fw-light mb-4">
+                                Selecciona el tratamiento de tu preferencia y el horario ideal. Te recomendamos llegar
+                                15 minutos antes para disfrutar de nuestra infusión herbal de bienvenida.
+                            </p>
+                            <ul class="list-unstyled space-y-3 opacity-90 small">
+                                <li class="mb-3 d-flex align-items-center">
+                                    <i class="bi bi-check-circle-fill text-gold fs-5 me-3"></i>
+                                    <span>Incluye bata de algodón orgánico, pantuflas y locker privado.</span>
+                                </li>
+                                <li class="mb-3 d-flex align-items-center">
+                                    <i class="bi bi-check-circle-fill text-gold fs-5 me-3"></i>
+                                    <span>Cancelación o reprogramación gratuita con 24h de antelación.</span>
+                                </li>
+                                <li class="mb-3 d-flex align-items-center">
+                                    <i class="bi bi-check-circle-fill text-gold fs-5 me-3"></i>
+                                    <span>Atención personalizada según alergias o preferencias de presión.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="pt-4 border-top border-white border-opacity-25 mt-4">
+                            <small class="d-block opacity-75">¿Prefieres atención directa?</small>
+                            <span class="fs-5 fw-semibold"><i
+                                    class="bi bi-whatsapp me-2 text-gold"></i>3008664414</span>
+                        </div>
+                    </div>
+
+                    <!-- Formulario -->
+                    <div class="col-lg-7 p-4 p-md-5 bg-white">
+                        <h3 class="fw-bold mb-4">Detalles de tu Reserva</h3>
+                        <form id="bookingForm" novalidate>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="clientName" class="form-label small fw-medium">Nombre Completo *</label>
+                                    <input type="text" class="form-control" id="clientName"
+                                        placeholder="Ej. Sofía Martínez" required>
+                                    <div class="invalid-feedback">Por favor ingresa tu nombre completo.</div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="clientPhone" class="form-label small fw-medium">Teléfono / WhatsApp
+                                        *</label>
+                                    <input type="tel" class="form-control" id="clientPhone"
+                                        placeholder="Ej. +57 300 123 4567" required>
+                                    <div class="invalid-feedback">Por favor ingresa un número de contacto válido.</div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="serviceSelect" class="form-label small fw-medium">Tratamiento o Paquete
+                                        *</label>
+                                    <select class="form-select" id="serviceSelect" required>
+                                        <option value="" selected disabled>Selecciona una experiencia...</option>
+                                        <optgroup label="Servicios Individuales">
+                                            <option value="Masaje Relajante ($85 - 60 min)">Masaje Relajante ($85 - 60
+                                                min)</option>
+                                            <option value="Tratamiento Facial Botánico ($95 - 60 min)">Tratamiento
+                                                Facial Botánico ($95 - 60 min)</option>
+                                            <option value="Circuito de Hidroterapia ($75 - 75 min)">Circuito de
+                                                Hidroterapia ($75 - 75 min)</option>
+                                            <option value="Sesión de Aromaterapia ($70 - 50 min)">Sesión de Aromaterapia
+                                                ($70 - 50 min)</option>
+                                            <option value="Ritual Corporal Nutritivo ($115 - 90 min)">Ritual Corporal
+                                                Nutritivo ($115 - 90 min)</option>
+                                            <option value="Sauna Finlandés y Vapor ($55 - 45 min)">Sauna Finlandés y
+                                                Vapor ($55 - 45 min)</option>
+                                        </optgroup>
+                                        <optgroup label="Paquetes Especiales">
+                                            <option value="Paquete Ritual Detox & Renacer ($145)">Paquete Ritual Detox &
+                                                Renacer ($145)</option>
+                                            <option value="Paquete Día de Spa en Pareja ($260)">Paquete Día de Spa en
+                                                Pareja ($260)</option>
+                                            <option value="Paquete Escapada SpaSun VIP ($195)">Paquete Escapada SpaSun
+                                                VIP ($195)</option>
+                                        </optgroup>
+                                    </select>
+                                    <div class="invalid-feedback">Por favor selecciona un servicio.</div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="bookingDate" class="form-label small fw-medium">Fecha Preferida
+                                        *</label>
+                                    <input type="date" class="form-control" id="bookingDate" required>
+                                    <div class="invalid-feedback">Selecciona una fecha válida.</div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="bookingTime" class="form-label small fw-medium">Horario Preferido
+                                        *</label>
+                                    <select class="form-select" id="bookingTime" required>
+                                        <option value="" selected disabled>Elige una hora...</option>
+                                        <option value="09:00 AM">09:00 AM</option>
+                                        <option value="10:30 AM">10:30 AM</option>
+                                        <option value="12:00 PM">12:00 PM</option>
+                                        <option value="02:30 PM">02:30 PM</option>
+                                        <option value="04:00 PM">04:00 PM</option>
+                                        <option value="05:30 PM">05:30 PM</option>
+                                        <option value="07:00 PM">07:00 PM</option>
+                                    </select>
+                                    <div class="invalid-feedback">Selecciona un horario disponible.</div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="specialNotes" class="form-label small fw-medium">Notas o Preferencias
+                                        (Opcional)</label>
+                                    <textarea class="form-control" id="specialNotes" rows="2"
+                                        placeholder="Indícanos si deseas terapeuta mujer/hombre, aroma favorito o alguna condición especial..."></textarea>
+                                </div>
+
+                                <div class="col-12 mt-4">
+                                    <button type="submit" class="btn btn-gold w-100 py-3 fs-6">
+                                        <i class="bi bi-check2-circle me-2"></i>Confirmar Solicitud de Reserva
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. PIE DE PÁGINA COMPLETO -->
+    <footer class="pt-5 pb-4">
+        <div class="container">
+            <div class="row g-4 pb-4 border-bottom border-secondary border-opacity-25">
+                <!-- Marca y Redes -->
+                <div class="col-lg-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="bi bi-flower1 fs-3 text-gold me-2"></i>
+                        <span class="font-serif fw-bold fs-4 text-white">SpaSun</span>
+                    </div>
+                    <p class="small opacity-75 mb-4 pe-lg-4">
+                        Tu santuario urbano de paz, equilibrio y renovación holística. Creamos experiencias sensoriales
+                        diseñadas para reconectar cuerpo y mente.
+                    </p>
+                    <div class="d-flex gap-2">
+                        <a href="https://www.instagram.com/spa.sun1/" target="_blank" rel="noopener noreferrer"
+                            class="social-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="https://www.facebook.com/sun.medellin" target="_blank" rel="noopener noreferrer"
+                            class="social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="https://api.whatsapp.com/send/?phone=573207012696&text&type=phone_number&app_absent=0"
+                            target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="WhatsApp"><i
+                                class="bi bi-whatsapp"></i></a>
+                        <a href="https://www.tiktok.com/@spasun1" target="_blank" rel="noopener noreferrer"
+                            class="social-btn" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <!-- Enlaces Rápidos -->
+                <div class="col-sm-6 col-lg-2">
+                    <h5 class="mb-3 fs-6 text-uppercase tracking-wider">Explorar</h5>
+                    <ul class="list-unstyled small">
+                        <li><a href="#inicio" class="footer-link">Inicio</a></li>
+                        <li><a href="#servicios" class="footer-link">Tratamientos</a></li>
+                        <li><a href="#nosotros" class="footer-link">Filosofía</a></li>
+                        <li><a href="#paquetes" class="footer-link">Paquetes Spa</a></li>
+                        <li><a href="#reservar" class="footer-link">Reservar Cita</a></li>
+                        <li class="mt-2"><a href="/admin" class="footer-link text-gold"><i
+                                    class="bi bi-shield-lock me-1"></i>Admin</a></li>
+                    </ul>
+                </div>
+
+                <!-- Horarios de Atención -->
+                <div class="col-sm-6 col-lg-3">
+                    <h5 class="mb-3 fs-6 text-uppercase tracking-wider">Horarios</h5>
+                    <ul class="list-unstyled small opacity-75">
+                        <li class="mb-2 d-flex justify-content-between">
+                            <span>Lunes - Viernes:</span>
+                            <span class="text-white">9:00 AM - 8:30 PM</span>
+                        </li>
+                        <li class="mb-2 d-flex justify-content-between">
+                            <span>Sábados:</span>
+                            <span class="text-white">9:00 AM - 9:00 PM</span>
+                        </li>
+                        <li class="mb-2 d-flex justify-content-between">
+                            <span>Domingos y Festivos:</span>
+                            <span class="text-white">10:00 AM - 6:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Ubicación y Contacto -->
+                <div class="col-lg-3">
+                    <h5 class="mb-3 fs-6 text-uppercase tracking-wider">Contacto & Ubicación</h5>
+                    <ul class="list-unstyled small opacity-75">
+                        <li class="mb-2">
+                            <i class="bi bi-geo-alt-fill text-gold me-2"></i>
+                            Carrera 70 # 106C - 52 Barrio Tejelo
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-telephone-fill text-gold me-2"></i>
+                            +57 (300) 866-4414
+                        </li>
+                        <li class="mb-3">
+                            <i class="bi bi-envelope-fill text-gold me-2"></i>
+                            reservas@spasun.com
+                        </li>
+                    </ul>
+                    <!-- Mapa Integrado Compacto -->
+                    <div class="rounded-3 overflow-hidden border border-secondary border-opacity-25"
+                        style="height: 110px;">
+                        <iframe title="Ubicación SpaSun"
+                            src="https://www.openstreetmap.org/export/embed.html?bbox=-75.5730%2C6.2050%2C-75.5620%2C6.2120&amp;layer=mapnik&amp;marker=6.2085%2C-75.5675"
+                            style="width: 100%; height: 100%; border: 0; filter: grayscale(30%) contrast(95%);"
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-4 text-center small opacity-50">
+                <p class="mb-0">&copy; 2026 SpaSun. Todos los derechos reservados. Diseñado para tu bienestar.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL DE CONFIRMACIÓN DE RESERVA -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 rounded-4 shadow-lg overflow-hidden">
+                <div class="modal-header border-0 text-white"
+                    style="background: linear-gradient(135deg, var(--spa-sage) 0%, var(--spa-sage-dark) 100%);">
+                    <h5 class="modal-title font-serif fw-bold" id="confirmationModalLabel">
+                        <i class="bi bi-flower1 text-gold me-2"></i>¡Reserva Recibida con Éxito!
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body p-4 text-center" style="background-color: var(--spa-cream);">
+                    <div class="mb-3">
+                        <span
+                            class="d-inline-flex align-items-center justify-content-center rounded-circle bg-white shadow-sm"
+                            style="width: 70px; height: 70px;">
+                            <i class="bi bi-check-lg text-gold fs-1"></i>
+                        </span>
+                    </div>
+                    <h4 class="fw-bold mb-2">Gracias, <span id="modalClientName" class="text-sage-dark"></span></h4>
+                    <p class="text-muted small mb-4">
+                        Hemos pre-agendado tu momento de bienestar. Nuestro equipo de concierge te enviará un mensaje de
+                        confirmación a tu teléfono en breve.
+                    </p>
+
+                    <div class="bg-white rounded-3 p-3 text-start border mb-3">
+                        <div class="d-flex justify-content-between border-bottom pb-2 mb-2">
+                            <span class="small text-muted">Experiencia:</span>
+                            <span class="small fw-semibold text-end" id="modalService"></span>
+                        </div>
+                        <div class="d-flex justify-content-between border-bottom pb-2 mb-2">
+                            <span class="small text-muted">Fecha y Hora:</span>
+                            <span class="small fw-semibold" id="modalDateTime"></span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span class="small text-muted">Teléfono de contacto:</span>
+                            <span class="small fw-semibold" id="modalPhone"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 justify-content-center pb-4"
+                    style="background-color: var(--spa-cream);">
+                    <button type="button" class="btn btn-gold px-5" data-bs-dismiss="modal">Entendido, ¡Nos vemos
+                        pronto!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <!-- Lógica JavaScript Interactiva -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Efecto de sombra en Navbar al hacer scroll
+            const navbar = document.getElementById('mainNavbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 40) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // 2. Cerrar menú móvil automáticamente al hacer clic en un enlace
+            const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+            const navbarCollapse = document.getElementById('navbarContent');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navbarCollapse.classList.contains('show')) {
+                        const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                        if (bsCollapse) bsCollapse.hide();
+                    }
+                });
+            });
+
+            // 3. Configurar fecha mínima en el selector de fecha (Hoy)
+            const dateInput = document.getElementById('bookingDate');
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.setAttribute('min', today);
+
+            // 4. Autocompletar servicio al hacer clic en "Reservar" desde tarjetas o paquetes
+            const selectServiceBtns = document.querySelectorAll('.select-service-btn');
+            const serviceSelect = document.getElementById('serviceSelect');
+            const bookingSection = document.getElementById('reservar');
+
+            selectServiceBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const selectedService = btn.getAttribute('data-service');
+                    serviceSelect.value = selectedService;
+                    bookingSection.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+
+            // 5. Validación y envío del formulario de reserva a Spring Boot y MySQL
+            const bookingForm = document.getElementById('bookingForm');
+            const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+
+            bookingForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                event.stopPropagation();
+
+                if (!bookingForm.checkValidity()) {
+                    bookingForm.classList.add('was-validated');
+                    return;
+                }
+
+                // Obtener valores del formulario mapeados a la entidad Reserva
+                const formData = new URLSearchParams();
+                formData.append('clienteNombre', document.getElementById('clientName').value.trim());
+                formData.append('telefono', document.getElementById('clientPhone').value.trim());
+                formData.append('servicio', serviceSelect.value);
+                formData.append('fecha', dateInput.value);
+                formData.append('hora', document.getElementById('bookingTime').value);
+                formData.append('notas', document.getElementById('specialNotes').value.trim());
+
+                try {
+                    const response = await fetch('/api/reservas', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: formData
+                    });
+
+                    if (response.ok) {
+                        const name = document.getElementById('clientName').value.trim();
+                        const phone = document.getElementById('clientPhone').value.trim();
+                        const service = serviceSelect.value;
+                        const dateRaw = dateInput.value;
+                        const time = document.getElementById('bookingTime').value;
+
+                        const [year, month, day] = dateRaw.split('-');
+                        const formattedDate = `${day}/${month}/${year}`;
+
+                        document.getElementById('modalClientName').textContent = name;
+                        document.getElementById('modalService').textContent = service;
+                        document.getElementById('modalDateTime').textContent = `${formattedDate} a las ${time}`;
+                        document.getElementById('modalPhone').textContent = phone;
+
+                        confirmationModal.show();
+                        bookingForm.reset();
+                        bookingForm.classList.remove('was-validated');
+                    } else {
+                        alert('Hubo un error al guardar la reserva. Por favor intenta de nuevo.');
+                    }
+                } catch (error) {
+                    console.error('Error de red:', error);
+                    alert('No se pudo conectar con el servidor.');
+                }
+            });
+        });
+    </script>
+    <!-- Botón flotante de Administrador -->
+    <a href="/admin"
+        class="btn btn-gold shadow-lg position-fixed bottom-0 end-0 m-4 rounded-circle d-flex align-items-center justify-content-center"
+        style="width: 55px; height: 55px; z-index: 1050; text-decoration: none;" title="Panel de Administración">
+        <i class="bi bi-gear-fill fs-5 text-white"></i>
+    </a>
+</body>
+
+</html>
