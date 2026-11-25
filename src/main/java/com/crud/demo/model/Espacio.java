@@ -11,7 +11,7 @@ public class Espacio {
     private String nombre;
     private Integer capacidad;
     private String descripcion;
-    private Boolean disponible;
+    private Boolean disponible = true;
 
     // Getters y Setters
     public Long getId() {

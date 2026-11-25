@@ -1,5 +1,6 @@
 package com.crud.demo.controller;
 
+import com.crud.demo.model.Espacio;
 import com.crud.demo.model.Reserva;
 import com.crud.demo.repository.ReservaRepository;
 import com.crud.demo.repository.PersonalRepository;
@@ -66,6 +67,14 @@ public class HomeController {
     @GetMapping("/admin/eliminar/{id}")
     public String eliminarReserva(@PathVariable Long id) {
         reservaRepository.deleteById(id);
+        return "redirect:/admin";
+    }
+
+    @PostMapping("/admin/espacios/toggle/{id}")
+    public String cambiarEstadoEspacio(@PathVariable Long id) {
+        Espacio espacio = espacioRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("ID inválido"));
+        espacio.setDisponible(!espacio.getDisponible());
+        espacioRepository.save(espacio);
         return "redirect:/admin";
     }
 }
